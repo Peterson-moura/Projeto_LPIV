@@ -20,8 +20,11 @@ class LoginRepository {
 
     }
 
+
+
+
     private fun verifyPassword(email: String, password: String): Boolean {
-        val fakeUser = Usuario("teste@teste.com", "teste")
+        val fakeUser = Usuario("admin@admin.com", "admin")
 
         return email == fakeUser.email && password == fakeUser.password
     }

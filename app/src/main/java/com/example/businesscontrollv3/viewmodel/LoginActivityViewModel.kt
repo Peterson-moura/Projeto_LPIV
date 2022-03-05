@@ -18,7 +18,7 @@ import kotlinx.coroutines.launch
 class LoginActivityViewModel(val loginRepository: LoginRepository) : ViewModel(), Observable {
 
     @Bindable
-    var email: String = "teste@teste.com"
+    var email: String = "admin@admin.com"
 
     @Bindable
     var password: String = ""

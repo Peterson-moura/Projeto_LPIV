@@ -46,12 +46,8 @@ class MainActivity : AppCompatActivity() {
 
         return when(item.itemId) {
             R.id.new_responsible -> {
-                GlobalScope.launch {
-                    val intent = Intent(applicationContext, ResponsibleActivity::class.java)
+                 val intent = Intent(applicationContext, ResponsibleActivity::class.java)
                     startActivity(intent)
-                    finish()
-                }
-
 
                 /*
                     Chamar tela para cadastro de responsavel chamado: ResponsibleActivity

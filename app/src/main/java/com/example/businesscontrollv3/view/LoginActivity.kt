@@ -30,8 +30,8 @@ class LoginActivity : AppCompatActivity() {
 
 
         // TODO: Codigo provisorio
-        loginViewModel.email = "teste@teste.com"
-        loginViewModel.password = "teste"
+        loginViewModel.email = "admin@admin.com"
+        loginViewModel.password = "admin"
         loginViewModel.doLogin()
     }
 
