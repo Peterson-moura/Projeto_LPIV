@@ -10,6 +10,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.businesscontrollv3.BR
 import com.example.businesscontrollv3.model.Result
+import com.example.businesscontrollv3.model.User
 import com.example.businesscontrollv3.model.Usuario
 import com.example.businesscontrollv3.repository.LoginRepository
 import kotlinx.coroutines.Dispatchers
@@ -18,7 +19,7 @@ import kotlinx.coroutines.launch
 class LoginActivityViewModel(val loginRepository: LoginRepository) : ViewModel(), Observable {
 
     @Bindable
-    var email: String = "admin@admin.com"
+    var email: String = "teste@teste.con"
 
     @Bindable
     var password: String = ""
@@ -66,7 +67,7 @@ class LoginActivityViewModel(val loginRepository: LoginRepository) : ViewModel()
             val result = loginRepository.login(email, password)
 
             when(result) {
-                is Result.Success<Usuario> -> redirect.postValue(true)
+                is Result.Success<User> -> redirect.postValue(true)
                 is Result.Error -> showError(result.exception.message)
             }
 
