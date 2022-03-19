@@ -5,25 +5,30 @@ import com.example.businesscontrollv3.infra.webservice.LoginAPI.loginService
 import com.example.businesscontrollv3.infra.webservice.LoginHttp
 import com.example.businesscontrollv3.model.Result
 import com.example.businesscontrollv3.model.User
-import com.example.businesscontrollv3.model.Usuario
+import com.example.businesscontrollv3.model.Login
 import java.lang.Exception
 
 
 class LoginRepository {
 
-    val loginString = LoginAPI.loginService
+    val loginService = LoginAPI.loginService
 
     suspend fun  loginOld(email: String, password: String): Result<User>{
-        return LoginHttp.doLogin(Usuario(email, password))
+        return LoginHttp.doLogin(Login(email, password))
     }
 
-    suspend fun login(email: String,password: String): Result<User>{
-        val response = loginService.login(Usuario(email, password))
-        return if (response.isSuccessful){
-            response.body()?.let { Result.Success(it) }?: Result.Error(Exception("Retorno vazio"))
-        }else{
-            val responseBodyError = response.errorBody()
-            Result.Error(Exception(responseBodyError?.string()))
+    suspend fun login(email: String, password: String): Result<User> {
+        return try {
+            val response = loginService.login(Login(email, password))
+            if (response.isSuccessful) {
+                Result.Success(response.body()!!)
+            } else {
+                val responseErrorBody = response.errorBody()
+                Result.Error(Exception(responseErrorBody?.string()))
+            }
+        } catch (e: Exception) {
+            println(e)
+            Result.Error(e)
         }
     }
 

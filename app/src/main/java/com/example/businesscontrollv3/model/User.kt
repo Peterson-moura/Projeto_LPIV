@@ -1,3 +1,8 @@
 package com.example.businesscontrollv3.model
 
-data class User (val name: String, val email: String)
+import com.google.gson.annotations.SerializedName
+
+data class User (
+    @SerializedName("nome")
+    val name: String,
+    val email: String)

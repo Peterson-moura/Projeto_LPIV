@@ -11,7 +11,6 @@ import androidx.lifecycle.viewModelScope
 import com.example.businesscontrollv3.BR
 import com.example.businesscontrollv3.model.Result
 import com.example.businesscontrollv3.model.User
-import com.example.businesscontrollv3.model.Usuario
 import com.example.businesscontrollv3.repository.LoginRepository
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch

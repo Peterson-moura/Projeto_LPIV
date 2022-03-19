@@ -7,19 +7,25 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
 object LoginAPI {
+
+    private const val API_BASE_URL = "https://business-controll-backend.herokuapp.com"
+
     private val okHttpClient: OkHttpClient by lazy{
         val client = OkHttpClient.Builder()
+
         client.addInterceptor(provideLogginInterceptor())
         client.build()
     }
 
-    private const val API_BASE_URL = "https://business-controll-backend.herokuapp.com"
+
+
 
     private val retrofit: Retrofit by lazy{
         Retrofit
             .Builder()
             .baseUrl(API_BASE_URL)
             .addConverterFactory(GsonConverterFactory.create())
+            .client(okHttpClient)
             .build()
     }
 

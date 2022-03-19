@@ -23,4 +23,7 @@
     <string name="title_new_account"> + Conta </string>
     <string name="title_navigation_configuration"> Configurações </string>
 
+    <string name="preference_list_responsibles">responsibles</string>
+
+
 </resources>
