@@ -24,6 +24,8 @@
     <string name="title_navigation_configuration"> Configurações </string>
 
     <string name="preference_list_responsibles">responsibles</string>
+    <string name="hint_account_balance">Saldo da Conta</string>
+    <string name="hint_name_accout">Nome da Conta</string>
 
 
 </resources>

@@ -6,10 +6,13 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.RecyclerView
 import com.example.businesscontrollv3.R
+import com.example.businesscontrollv3.view.adapter.AccountAdapter
 import com.example.businesscontrollv3.viewmodel.AccountsViewModel
 import com.example.businesscontrollv3.viewmodel.ResumeViewModel
 import kotlinx.android.synthetic.main.fragment_resume.*
+
 
 class AccountsFragment : Fragment() {
 
@@ -18,9 +21,6 @@ class AccountsFragment : Fragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        accountsViewModel = ViewModelProvider(this).get(AccountsViewModel::class.java).apply {
-            setIndex(arguments?.getInt(ARG_SECTION_NUMBER) ?: 1)
-        }
 
     }
 
@@ -28,14 +28,12 @@ class AccountsFragment : Fragment() {
                               savedInstanceState: Bundle?): View? {
         val root = inflater.inflate(R.layout.fragment_accounts, container, false)
 
-        accountsViewModel.text.observe(viewLifecycleOwner) {
-            section_label.text = it
-        }
+        val recyclerView = root.findViewById<RecyclerView>(R.id.accounts_recyclerview)
+        recyclerView.adapter = AccountAdapter(emptyList())
 
         return root
+        }
+
     }
 
-    companion object {
-        const val ARG_SECTION_NUMBER = "section_number"
-    }
-}
+

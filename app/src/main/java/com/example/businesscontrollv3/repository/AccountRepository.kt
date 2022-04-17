@@ -1,18 +1,20 @@
 package com.example.businesscontrollv3.repository
 
+import androidx.annotation.WorkerThread
+import com.example.businesscontrollv3.infra.database.AccountDAO
 import com.example.businesscontrollv3.model.Account
-import com.example.businesscontrollv3.model.AccountTypeEnum
-import com.example.businesscontrollv3.model.Responsible
-import java.math.BigDecimal
 
-class AccountRepository {
+class AccountRepository(private val accoutDAO: AccountDAO ) {
 
-    fun getALLAccounts(): MutableList<Account>{
-        val responsible = Responsible("Peterson")
+    fun getAccounts() = accoutDAO.getAllAccount()
 
-        return mutableListOf(
-            Account("Banco 3", BigDecimal.TEN, responsible, AccountTypeEnum.DEBITO),
-            Account("Banco 4", BigDecimal.valueOf(1000.00), responsible, AccountTypeEnum.DEBITO)
-        )
+    @WorkerThread
+    suspend fun  save(account: Account){
+        accoutDAO.save(account)
     }
+
+    suspend fun deleteAccout(account: Account){
+        this.accoutDAO.delete(account)
+    }
+
 }
